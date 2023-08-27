@@ -11,7 +11,7 @@ func Setup() *gin.Engine {
 	router := gin.Default()
 
 	corsConfig := cors.DefaultConfig()
-	corsConfig.AllowOrigins = []string{"http://localhost:3000", "https://todos-backend-959u.onrender.com"}
+	corsConfig.AllowOrigins = []string{"http://localhost:3000", "https://todos-frontend.onrender.com"}
 	corsConfig.AllowCredentials = true
 	corsConfig.AddAllowMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
 	router.Use(cors.New(corsConfig))
