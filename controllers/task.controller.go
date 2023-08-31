@@ -1,8 +1,9 @@
 package controllers
 
 import (
-	"server/utils"
 	"server/models"
+	"server/utils"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -28,14 +29,14 @@ func CreateTask(ctx *gin.Context) {
 		utils.RespondJSON(ctx, 404, task)
 		return
 	}
-	
+
 	utils.RespondJSON(ctx, 200, task)
 	return
 }
 
 func FindTaskById(ctx *gin.Context) {
 	id := ctx.Params.ByName("id")
-	
+
 	var task models.Task
 	err := models.FindTaskById(&task, id)
 
@@ -43,7 +44,7 @@ func FindTaskById(ctx *gin.Context) {
 		utils.RespondJSON(ctx, 404, task)
 		return
 	}
-	
+
 	utils.RespondJSON(ctx, 200, task)
 	return
 }
@@ -58,7 +59,7 @@ func UpdateTask(ctx *gin.Context) {
 		utils.RespondJSON(ctx, 404, task)
 		return
 	}
-	
+
 	ctx.BindJSON(&task)
 	err = models.UpdateTask(&task, id)
 
@@ -66,7 +67,7 @@ func UpdateTask(ctx *gin.Context) {
 		utils.RespondJSON(ctx, 404, task)
 		return
 	}
-	
+
 	utils.RespondJSON(ctx, 200, task)
 	return
 }
@@ -76,12 +77,12 @@ func DeleteTask(ctx *gin.Context) {
 
 	var task models.Task
 	err := models.DeleteTask(&task, id)
-	
+
 	if err != nil {
 		utils.RespondJSON(ctx, 404, task)
 		return
 	}
-	
+
 	utils.RespondJSON(ctx, 200, task)
 	return
 }
